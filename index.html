@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pioneer bank</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login-box" >
+        <h1 class="text-center">WELCOME TO PIONEER BANK</h1>
+        <div class="login-area">
+            <h4>Login</h4>
+            <input class="form-control" type="e-mail" placeholder="enter your email-here">
+            <br>
+            <input class="form-control" type="password" placeholder="password">
+            <br>
+            <button class=" btn btn-success" id="login-id">ENTER/LOGIN</button>
+
+        </div>
+        
+    </div>
+    <div id="transaction-area">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="deposit total">
+                    <h5 >DEPOSIT</h5>
+                <h2>$ <span id="currentDeposit">00</span></h2>
+                </div>
+            </div>
+            <div  class="col-md-4">
+             <div class="withdraw total">
+                <h5 >WITHDRAW</h5>
+                <h2>0$</h2>
+             </div>
+            </div>
+            <div class="col-md-4">
+                <div class="balance total">
+                    <h5>BALANCE</h5>
+                <h2>0$</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row"  >
+            <div class="col-md-6">
+                <div class="amount">
+                    <h4>DEPOSIT</h4>
+                <input id="depositAmount" class="form-control" type="text" placeholder="enter your amount here">
+                <br>
+                <div class=" btn btn-success" id="addDeposit">deposit</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <div class="amount">
+                    <h4>WITHDRAW</h4>
+                    <input  class="form-control" type="text" placeholder="enter your amount here">
+                    <br>
+                    <div class=" btn btn-success" id="withdraw">withdraw</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+       
+    
+    <script>
+        const loginBtn=document.getElementById("login-id")
+        loginBtn.addEventListener("click", function(){
+            const loginArea = document.getElementById("login-box");
+            loginArea.style.display = "none";
+            const transactionArea = document.getElementById("transaction-area");
+            transactionArea.style.display= "block";
+        })
+        
+        const depositButton = document.getElementById("addDeposit");
+        depositButton.addEventListener("click", function(){
+            console.log("valo lagteche na")
+        })
+           
+        
+    </script>
+</body>
+</html>
+
