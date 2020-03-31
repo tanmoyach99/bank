@@ -26,19 +26,19 @@
             <div class="col-md-4">
                 <div class="deposit total">
                     <h5 >DEPOSIT</h5>
-                <h2>$ <span id="currentDeposit">00</span></h2>
+                <h2>$ <span id="currentDeposit"> 00 </span></h2>
                 </div>
             </div>
             <div  class="col-md-4">
              <div class="withdraw total">
                 <h5 >WITHDRAW</h5>
-                <h2>0$</h2>
+                <h2>$ <span id="currentWithdraw" > 00 </span></h2>
              </div>
             </div>
             <div class="col-md-4">
                 <div class="balance total">
                     <h5>BALANCE</h5>
-                <h2>0$</h2>
+                <h2>$<span id="currentBalance">1200</span></h2>
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
             <div class="col-md-6">
                 <div class="amount">
                     <h4>DEPOSIT</h4>
-                <input id="depositAmount" class="form-control" type="text" placeholder="enter your amount here">
+                <input id="depositAmount" class="form-control"  type="text" placeholder="deposit your amount here">
                 <br>
                 <div class=" btn btn-success" id="addDeposit">deposit</div>
                 </div>
@@ -55,9 +55,9 @@
 
                 <div class="amount">
                     <h4>WITHDRAW</h4>
-                    <input  class="form-control" type="text" placeholder="enter your amount here">
+                    <input id="withdrawAmount" class="form-control" type="text" placeholder="enter your amount here">
                     <br>
-                    <div class=" btn btn-success" id="withdraw">withdraw</div>
+                    <div class=" btn btn-success" id="addWithdraw">withdraw</div>
                 </div>
             </div>
         </div>
@@ -66,6 +66,7 @@
        
     
     <script>
+        //login button trace
         const loginBtn=document.getElementById("login-id")
         loginBtn.addEventListener("click", function(){
             const loginArea = document.getElementById("login-box");
@@ -73,11 +74,51 @@
             const transactionArea = document.getElementById("transaction-area");
             transactionArea.style.display= "block";
         })
-        
+        //deposit button trace
         const depositButton = document.getElementById("addDeposit");
         depositButton.addEventListener("click", function(){
-            console.log("valo lagteche na")
+            const depositNumber = getInputNumber("depositAmount");
+
+            document.getElementById("depositAmount").value = "";
+
+            updateSpanText("currentDeposit",depositNumber);
+            updateSpanText("currentBalance",depositNumber);//balance update after withdraw using func
+
+          
+
         })
+        //withdraw button trace
+        const withdrawBtn = document.getElementById("addWithdraw");
+        withdrawBtn.addEventListener("click",function(){
+            const withdrawNumber = getInputNumber("withdrawAmount")
+            console.log(withdrawNumber);
+
+            updateSpanText("currentWithdraw",withdrawNumber);
+            updateSpanText("currentBalance", -1*withdrawNumber);
+
+            document.getElementById("withdrawAmount").value = "";
+
+        
+
+        })
+        // function for getting the number in input
+        function getInputNumber(id){
+            const Amount = document.getElementById(id).value;
+            const Number = parseFloat(Amount);
+            return Number;
+        }
+
+
+        //function for updating deposit,balance and withdraw number which is under a span.....
+
+
+       function updateSpanText(id, depositNumber){
+            const current = document.getElementById(id).innerText;
+            const currentNumber = parseFloat(current);
+            const total = currentNumber+ depositNumber;
+            document.getElementById(id).innerText = total;
+       }
+        
            
         
     </script>
